@@ -69,3 +69,75 @@ select
         ' character long'
     )as 'author_lname length'
 from books;
+
+-- Upper Lower case
+select upper('hello world') as Upper_case;
+select lower('HELLO WORLD') as Lower_case;
+
+-- Exercise
+-- Reverse and Upper case the following sentence
+--    "Why does my cat look at me with such hatred?"
+
+select
+	 "Why does my cat look at me with such hatred?" as sentence,
+     reverse(
+		upper("Why does my cat look at me with such hatred?")
+     ) as reverse_upper;
+     
+-- what does this print
+select
+	replace(
+		concat('I',' ','LIKE',' ','CATS'),
+        ' ',
+        '_'
+    )as cat_lover;
+
+-- Replace space in title with '->'
+select title,
+replace(title,' ','->') as new_title
+from books;
+
+-- print autor_lname forward and backword
+select author_lname as forward,
+reverse(author_lname) as backward
+from books;
+
+-- convert author_fname and author_lname into upper case and concat them both 
+select author_fname,author_lname,
+concat(
+	upper(author_fname),
+    ' ',
+    upper(author_lname)
+    ) as 'full name as caps'
+from books;
+
+-- concate title and year in a readable manner
+select 
+concat(
+		title,
+        ' was released in ',
+        released_year
+	) as blurb
+from books;
+
+-- print book title and their length
+select title,
+char_length(title) as 'character count'
+from books;
+
+-- last practice
+select 
+concat(
+	substr(title,1,10),
+    '...'
+	)as short_title,
+concat(
+	author_lname,
+    ',',
+    author_fname
+	)as author,
+concat(
+	stock_quantity,
+    ' in stock'
+	)as quantity
+from books;
